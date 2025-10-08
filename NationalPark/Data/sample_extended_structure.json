@@ -1,0 +1,28 @@
+{
+  "// This is a sample of how you can extend the JSON structure in the future": "",
+  "nationalParks": [
+    {
+      "Id": 9,
+      "Name": "Bryce Canyon National Park",
+      "State": "Utah",
+      "Description": "Bryce Canyon National Park is an American national park located in southern Utah. Despite its name, Bryce Canyon is not a canyon but a collection of natural amphitheaters filled with colorful hoodoos.",
+      "ImageUrl": "https://www.nps.gov/common/uploads/structured_data/3C7F8577-1DD8-B71B-0BDE4A4EFB3A0B0B.jpg",
+      "EstablishedDate": "1928-02-25T00:00:00",
+      "AreaInAcres": 35835,
+      "Region": "Western USA",
+      "Website": "https://www.nps.gov/brca/",
+      "Phone": "(435) 834-5322",
+      "Activities": ["Hiking", "Photography", "Stargazing", "Wildlife Viewing"],
+      "Climate": "High desert with cold winters and mild summers",
+      "BestTimeToVisit": "April to October",
+      "EntryFee": 35.00,
+      "AnnualVisitors": 2600000
+    }
+  ],
+  "// You can add metadata about the data source": "",
+  "metadata": {
+    "lastUpdated": "2024-01-15T00:00:00",
+    "dataVersion": "1.0",
+    "source": "National Park Service"
+  }
+}

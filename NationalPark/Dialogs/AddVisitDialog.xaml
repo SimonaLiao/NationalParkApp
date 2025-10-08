@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="NationalPark.Dialogs.AddVisitDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NationalPark.Dialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Add Visit Record"
+    PrimaryButtonText="Save"
+    SecondaryButtonText="Cancel"
+    DefaultButton="Primary">
+
+    <StackPanel Spacing="16" MinWidth="400">
+        <TextBlock Text="{x:Bind ParkName}" 
+                  Style="{StaticResource SubheaderTextBlockStyle}"
+                  TextWrapping="Wrap"/>
+
+        <StackPanel Spacing="8">
+            <TextBlock Text="Visit Date" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+            <DatePicker x:Name="VisitDatePicker" 
+                       Date="{x:Bind VisitDate, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <StackPanel Spacing="8">
+            <TextBlock Text="Rating" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+            <Slider x:Name="RatingSlider"
+                   Minimum="1"
+                   Maximum="5"
+                   Value="{x:Bind Rating, Mode=TwoWay}"
+                   StepFrequency="1"
+                   TickFrequency="1"
+                   TickPlacement="BottomRight"
+                   Header="{x:Bind GetRatingText(Rating), Mode=OneWay}"/>
+        </StackPanel>
+
+        <StackPanel Spacing="8">
+            <TextBlock Text="Comments" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+            <TextBox x:Name="CommentsTextBox"
+                    Text="{x:Bind Comments, Mode=TwoWay}"
+                    PlaceholderText="Share your experience..."
+                    TextWrapping="Wrap"
+                    AcceptsReturn="True"
+                    MinHeight="100"/>
+        </StackPanel>
+    </StackPanel>
+</ContentDialog>

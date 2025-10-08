@@ -1,0 +1,104 @@
+[
+  {
+    "Id": 1,
+    "Name": "Yellowstone National Park",
+    "State": "Wyoming, Montana, Idaho",
+    "Description": "Yellowstone National Park is a nearly 3,500-sq.-mile wilderness recreation area atop a volcanic hotspot. Mostly in Wyoming, the park spreads into parts of Montana and Idaho too. Yellowstone features dramatic canyons, alpine rivers, lush forests, hot springs and gushing geysers � including its most famous, Old Faithful.",
+    "ImageUrl": "https://www.nps.gov/npgallery/GetAsset/fbf8deda-a0c6-422e-b8ff-4275dd14f289/proxy/hires?",
+    "EstablishedDate": "1872-03-01T00:00:00",
+    "AreaInAcres": 2219791,
+    "Region": "Western USA"
+  },
+
+
+  {
+    "Id": 2,
+    "Name": "Grand Canyon National Park",
+    "State": "Arizona",
+    "Description": "Located in Arizona, Grand Canyon National Park encompasses 277 river miles of the Colorado River and adjacent uplands. The park is home to much of the immense Grand Canyon; a mile (1.6 km) deep, and up to 18 miles (29 km) wide.",
+    "ImageUrl": "https://lp-cms-production.imgix.net/2019-06/2314af493613490292dff2b43dd0be60575ddb8ad07acf2b9375c5f3cfcb84ea.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4",
+    "EstablishedDate": "1919-02-26T00:00:00",
+    "AreaInAcres": 1217262,
+    "Region": "Western USA"
+  },
+  {
+    "Id": 3,
+    "Name": "Yosemite National Park",
+    "State": "California",
+    "Description": "Yosemite National Park is in California's Sierra Nevada mountains. It's famed for its giant, ancient sequoia trees, and for Tunnel View, the iconic vista of towering Bridalveil Fall and the granite cliffs of El Capitan and Half Dome.",
+    "ImageUrl": "https://wallpaperaccess.com/full/2558322.jpg",
+    "EstablishedDate": "1890-10-01T00:00:00",
+    "AreaInAcres": 761747,
+    "Region": "Western USA"
+  },
+  {
+    "Id": 4,
+    "Name": "Great Smoky Mountains National Park",
+    "State": "Tennessee, North Carolina",
+    "Description": "Great Smoky Mountains National Park straddles the border between North Carolina and Tennessee. The park encompasses 816 square miles of pristine wilderness area and is home to a diverse population of plants and animals.",
+    "ImageUrl": "https://www.nps.gov/npgallery/GetAsset/4e1fb9f8-fe3c-491b-aeaa-7a529b2a20fa/proxy/hires?",
+    "EstablishedDate": "1934-06-15T00:00:00",
+    "AreaInAcres": 522427,
+    "Region": "Eastern USA"
+  },
+  {
+    "Id": 5,
+    "Name": "Zion National Park",
+    "State": "Utah",
+    "Description": "Zion National Park is a southwest Utah desert dominated by the Zion Canyon's steep red cliffs. The canyon is a mix of white, pink, and red Navajo sandstone cliffs, with forested plateau tops and numerous canyons and tributaries.",
+    "ImageUrl": "https://www.nps.gov/npgallery/GetAsset/9863d408-155d-451f-67df-89cc4a0175b1/proxy/hires?",
+    "EstablishedDate": "1919-11-19T00:00:00",
+    "AreaInAcres": 147242,
+    "Region": "Western USA"
+  },
+  {
+    "Id": 6,
+    "Name": "Rocky Mountain National Park",
+    "State": "Colorado",
+    "Description": "Rocky Mountain National Park encompasses 415 square miles of pristine wilderness areas in the Colorado Rockies. With elevations from 7,500 to over 12,000 feet, the park has spectacular mountain environments.",
+    "ImageUrl": "https://www.nps.gov/npgallery/GetAsset/024b2289-1dd8-b71b-0b07-484c032bf19b/proxy/hires?",
+    "EstablishedDate": "1915-01-26T00:00:00",
+    "AreaInAcres": 265461,
+    "Region": "Western USA"
+  },
+  {
+    "Id": 7,
+    "Name": "Arches National Park",
+    "State": "Utah",
+    "Description": "Arches National Park lies north of Moab in the state of Utah. Bordered by the Colorado River in the southeast, it's known for its multitude of natural sandstone arches. The park contains more than 2,000 arches, at least 3 feet (0.91 m) wide.",
+    "ImageUrl": "https://www.nps.gov/npgallery/GetAsset/393c1e39-1dd8-b71b-0bc6-420602f300f9/proxy/hires?",
+    "EstablishedDate": "1971-11-12T00:00:00",
+    "AreaInAcres": 76519,
+    "Region": "Western USA"
+  },
+  {
+    "Id": 8,
+    "Name": "Acadia National Park",
+    "State": "Maine",
+    "Description": "Acadia National Park is located in the U.S. state of Maine, southwest of Bar Harbor. The park preserves about half of Mount Desert Island, many adjacent smaller islands, and part of the Schoodic Peninsula on the coast of Maine.",
+    "ImageUrl": "https://www.nps.gov/npgallery/GetAsset/f8520984-155d-451f-6704-e7386ed3373a/proxy/hires?",
+    "EstablishedDate": "1916-08-25T00:00:00",
+    "AreaInAcres": 47390,
+    "Region": "Eastern USA"
+  },
+  {
+    "Id": 9,
+    "Name": "Glacier National Park",
+    "State": "Montana",
+    "Description": "Glacier National Park is located in the northern Rocky Mountains in Montana. The park is known for its stunning mountain scenery, diverse ecosystems, and numerous glaciers.",
+    "ImageUrl": "https://www.nps.gov/npgallery/GetAsset/6b493ecc-669d-492f-a731-1c4489010195/proxy/hires?",
+    "EstablishedDate": "1910-05-11T00:00:00",
+    "AreaInAcres": 1013322,
+    "Region": "Western USA"
+  },
+  {
+    "id": 10,
+    "Name": "Great Tetons National Park",
+    "State": "Wyoming",
+    "Description": "Grand Teton National Park is located in northwestern Wyoming. The park is known for its stunning mountain scenery, pristine lakes, and diverse wildlife.",
+    "ImageUrl": "https://www.nps.gov/npgallery/GetAsset/05ad7b15-c6d4-4a29-bc39-2062c1991ea7/proxy/hires?",
+    "EstablishedDate": "1929-02-26T00:00:00",
+    "AreaInAcres": 484424,
+    "Region": "Western USA"
+  }
+]

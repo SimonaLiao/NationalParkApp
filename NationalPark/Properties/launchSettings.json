@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "NationalPark (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "NationalPark (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
