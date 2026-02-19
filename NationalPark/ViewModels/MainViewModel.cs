@@ -12,6 +12,7 @@ namespace NationalPark.ViewModels
         private readonly NationalParkService _parkService;
         private NationalParkModel? _selectedPark;
         private string _selectedRegion = "All Regions";
+        private string _searchText = string.Empty;
 
         public MainViewModel()
         {
@@ -65,6 +66,20 @@ namespace NationalPark.ViewModels
             }
         }
 
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                if (_searchText != value)
+                {
+                    _searchText = value;
+                    OnPropertyChanged();
+                    LoadParks(); // Reload parks when search text changes
+                }
+            }
+        }
+
         public void LoadRegions()
         {
             try
@@ -92,10 +107,19 @@ namespace NationalPark.ViewModels
             {
                 Parks.Clear();
                 
-                var parks = _selectedRegion == "All Regions" 
+                IEnumerable<NationalParkModel> parks = _selectedRegion == "All Regions" 
                     ? _parkService.GetAllParks() 
                     : _parkService.GetParksByRegion(_selectedRegion);
-                    
+
+                if (!string.IsNullOrWhiteSpace(_searchText))
+                {
+                    var search = _searchText.Trim();
+                    parks = parks.Where(p =>
+                        p.Name.Contains(search, System.StringComparison.OrdinalIgnoreCase) ||
+                        p.State.Contains(search, System.StringComparison.OrdinalIgnoreCase) ||
+                        p.Description.Contains(search, System.StringComparison.OrdinalIgnoreCase));
+                }
+
                 foreach (var park in parks)
                 {
                     Parks.Add(park);
