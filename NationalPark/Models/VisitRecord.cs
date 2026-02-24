@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace NationalPark.Models
 {
@@ -9,5 +10,6 @@ namespace NationalPark.Models
         public DateTime VisitDate { get; set; }
         public string Comments { get; set; } = string.Empty;
         public int Rating { get; set; } // 1-5 stars
+        public List<string> Photos { get; set; } = new List<string>();
     }
 }

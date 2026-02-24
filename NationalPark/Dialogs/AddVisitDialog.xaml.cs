@@ -1,6 +1,8 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using NationalPark.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.Globalization;
@@ -13,6 +15,7 @@ namespace NationalPark.Dialogs
         private DateTimeOffset _visitDate = DateTimeOffset.Now;
         private double _rating = 3;
         private string _comments = string.Empty;
+        private readonly ObservableCollection<string> _selectedPhotos = new ObservableCollection<string>();
 
         public string ParkName 
         { 
@@ -68,9 +71,14 @@ namespace NationalPark.Dialogs
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        public ObservableCollection<string> SelectedPhotos => _selectedPhotos;
+
+        public bool HasSelectedPhotos => _selectedPhotos.Count > 0;
+
         public AddVisitDialog()
         {
             this.InitializeComponent();
+            _selectedPhotos.CollectionChanged += (s, e) => OnPropertyChanged(nameof(HasSelectedPhotos));
         }
 
         public VisitRecord GetVisitRecord()
@@ -79,7 +87,8 @@ namespace NationalPark.Dialogs
             {
                 VisitDate = VisitDate.DateTime,
                 Rating = (int)Rating,
-                Comments = Comments
+                Comments = Comments,
+                Photos = new System.Collections.Generic.List<string>(_selectedPhotos)
             };
         }
 
@@ -87,6 +96,34 @@ namespace NationalPark.Dialogs
         {
             var stars = new string('★', (int)rating) + new string('☆', 5 - (int)rating);
             return $"{rating:F0} {stars}";
+        }
+
+        public Visibility GetPhotosVisibility(bool hasPhotos)
+        {
+            return hasPhotos ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private async void SelectPhotos_Click(object sender, RoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            WinRT.Interop.InitializeWithWindow.Initialize(
+                picker,
+                WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow!));
+
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            foreach (var ext in new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" })
+            {
+                picker.FileTypeFilter.Add(ext);
+            }
+
+            var files = await picker.PickMultipleFilesAsync();
+            if (files is null || files.Count == 0) return;
+            foreach (var file in files)
+            {
+                if (!_selectedPhotos.Contains(file.Path))
+                    _selectedPhotos.Add(file.Path);
+            }
         }
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

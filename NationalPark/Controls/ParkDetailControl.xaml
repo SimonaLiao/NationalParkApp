@@ -13,6 +13,8 @@
         <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
         <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter"/>
+        <converters:FilePathToImageSourceConverter x:Key="FilePathToImageSourceConverter"/>
     </UserControl.Resources>
 
     <ScrollViewer>
@@ -142,6 +144,26 @@
                                               Style="{StaticResource BodyTextBlockStyle}"
                                               TextWrapping="Wrap"
                                               Visibility="{Binding Comments, Converter={StaticResource StringToVisibilityConverter}}"/>
+
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                                  VerticalScrollBarVisibility="Disabled"
+                                                  Visibility="{Binding Photos, Converter={StaticResource CollectionToVisibilityConverter}}">
+                                        <ItemsControl ItemsSource="{Binding Photos}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal" Spacing="8"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border CornerRadius="4" Width="120" Height="90">
+                                                        <Image Source="{Binding Converter={StaticResource FilePathToImageSourceConverter}}"
+                                                               Stretch="UniformToFill"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </ScrollViewer>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>
