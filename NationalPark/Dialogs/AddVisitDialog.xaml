@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NationalPark.Dialogs"
+    xmlns:converters="using:NationalPark.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -11,6 +12,10 @@
     PrimaryButtonText="Save"
     SecondaryButtonText="Cancel"
     DefaultButton="Primary">
+
+    <ContentDialog.Resources>
+        <converters:FilePathToImageSourceConverter x:Key="FilePathToImageSourceConverter"/>
+    </ContentDialog.Resources>
 
     <StackPanel Spacing="16" MinWidth="400">
         <TextBlock Text="{x:Bind ParkName}" 
@@ -43,6 +48,30 @@
                     TextWrapping="Wrap"
                     AcceptsReturn="True"
                     MinHeight="100"/>
+        </StackPanel>
+
+        <StackPanel Spacing="8">
+            <TextBlock Text="Photos" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+            <Button Content="Select Photos" Click="SelectPhotos_Click"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Disabled"
+                          Visibility="{x:Bind GetPhotosVisibility(HasSelectedPhotos), Mode=OneWay}">
+                <ItemsControl ItemsSource="{x:Bind SelectedPhotos}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" Spacing="8"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="4" Width="80" Height="80">
+                                <Image Source="{Binding Converter={StaticResource FilePathToImageSourceConverter}}"
+                                       Stretch="UniformToFill"/>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </StackPanel>
     </StackPanel>
 </ContentDialog>
