@@ -26,6 +26,7 @@ namespace NationalPark
     /// </summary>
     public partial class App : Application
     {
+        public static Window? MainWindow { get; private set; }
         private Window? _window;
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace NationalPark
                 System.Diagnostics.Debug.WriteLine("App launching...");
                 
                 _window = new MainWindow();
+                MainWindow = _window;
                 
                 // Ensure the window is properly configured
                 _window.Title = "National Park Tracker";
