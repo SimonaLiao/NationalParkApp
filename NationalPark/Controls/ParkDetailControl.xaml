@@ -13,6 +13,7 @@
         <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
         <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:UrlToThumbnailImageConverter x:Key="UrlToThumbnailImageConverter"/>
     </UserControl.Resources>
 
     <ScrollViewer>
@@ -40,7 +41,7 @@
                       Foreground="{ThemeResource SystemAccentColor}"/>
 
             <Border CornerRadius="8">
-                <Image Source="{Binding ImageUrl}" 
+                <Image Source="{Binding ImageUrl, Converter={StaticResource UrlToThumbnailImageConverter}, ConverterParameter=800}" 
                        Height="300" 
                        Stretch="UniformToFill"/>
             </Border>
