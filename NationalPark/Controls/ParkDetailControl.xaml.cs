@@ -26,8 +26,6 @@ namespace NationalPark.Controls
                     OnPropertyChanged(nameof(ParkName));
                     OnPropertyChanged(nameof(State));
                     OnPropertyChanged(nameof(ImageUrl));
-                    OnPropertyChanged(nameof(EstablishedYear));
-                    OnPropertyChanged(nameof(AreaInAcres));
                     OnPropertyChanged(nameof(Description));
                     OnPropertyChanged(nameof(VisitRecords));
                 }
@@ -39,8 +37,6 @@ namespace NationalPark.Controls
         public string ParkName => Park?.Name ?? string.Empty;
         public string State => Park?.State ?? string.Empty;
         public string ImageUrl => Park?.ImageUrl ?? string.Empty;
-        public int EstablishedYear => Park?.EstablishedDate.Year ?? 0;
-        public int AreaInAcres => Park?.AreaInAcres ?? 0;
         public string Description => Park?.Description ?? string.Empty;
         public System.Collections.Generic.List<VisitRecord> VisitRecords => Park?.VisitRecords ?? new System.Collections.Generic.List<VisitRecord>();
 
