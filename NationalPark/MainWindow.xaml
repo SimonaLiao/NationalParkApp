@@ -20,6 +20,7 @@
             <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
             <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <converters:UrlToThumbnailImageConverter x:Key="UrlToThumbnailImageConverter"/>
         </Grid.Resources>
         
         <!-- Homepage with park listing -->
@@ -88,7 +89,7 @@
                                     </Grid.RowDefinitions>
 
                                     <Grid Grid.Row="0">
-                                        <Image Source="{Binding ImageUrl}" 
+                                        <Image Source="{Binding ImageUrl, Converter={StaticResource UrlToThumbnailImageConverter}}" 
                                               Stretch="UniformToFill"/>
                                         <Border Background="Black" 
                                                Opacity="0.3" 
