@@ -58,6 +58,10 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
+                        <TextBox x:Name="SearchTextBox"
+                                 Text="{x:Bind ViewModel.SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 PlaceholderText="Search by name, state, or description..."
+                                 MinWidth="280"/>
                         <TextBlock Text="{x:Bind GetParkCountText(ViewModel.Parks.Count), Mode=OneWay}" 
                                   Style="{StaticResource CaptionTextBlockStyle}"
                                   VerticalAlignment="Center"
