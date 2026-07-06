@@ -17,18 +17,15 @@ namespace NationalPark.Controls
             get => _park; 
             set 
             { 
-                if (_park != value)
-                {
-                    _park = value;
-                    OnPropertyChanged();
-                    // Trigger updates for all dependent properties
-                    OnPropertyChanged(nameof(IsVisited));
-                    OnPropertyChanged(nameof(ParkName));
-                    OnPropertyChanged(nameof(State));
-                    OnPropertyChanged(nameof(ImageUrl));
-                    OnPropertyChanged(nameof(Description));
-                    OnPropertyChanged(nameof(VisitRecords));
-                }
+                _park = value;
+                OnPropertyChanged();
+                // Trigger updates for all dependent properties even when the same park instance is mutated.
+                OnPropertyChanged(nameof(IsVisited));
+                OnPropertyChanged(nameof(ParkName));
+                OnPropertyChanged(nameof(State));
+                OnPropertyChanged(nameof(ImageUrl));
+                OnPropertyChanged(nameof(Description));
+                OnPropertyChanged(nameof(VisitRecords));
             } 
         }
 
