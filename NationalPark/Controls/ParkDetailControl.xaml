@@ -82,6 +82,27 @@
                 </StackPanel>
             </Border>
 
+            <!-- Wishlist/Favorite Section -->
+            <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    CornerRadius="8"
+                    Padding="16"
+                    Margin="0,8,0,0">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Wishlist" 
+                              Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+                    <Button x:Name="FavoriteButton"
+                            Click="FavoriteButton_Click"
+                            HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="{x:Bind GetFavoriteIcon(IsFavorite), Mode=OneWay}"
+                                     Foreground="{ThemeResource SystemAccentColor}"/>
+                            <TextBlock Text="{x:Bind GetFavoriteTooltip(IsFavorite), Mode=OneWay}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Border>
+
             <StackPanel Visibility="{x:Bind GetVisitRecordsVisibility(IsVisited), Mode=OneWay}"
                        Margin="0,16,0,0">
                 <TextBlock Text="Previous Visits" 
