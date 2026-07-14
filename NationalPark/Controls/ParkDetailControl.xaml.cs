@@ -97,19 +97,19 @@ namespace NationalPark.Controls
 
         public string GetFavoriteIcon(bool isFavorite)
         {
-            return isFavorite ? "\uE00B" : "\uE006"; // SolidStar or OutlineStar (heart alternatives: \uE0A5 filled, \uE00B outline)
+            return FavoriteStateHelper.GetFavoriteIcon(isFavorite); // \uE00B = park is on the wishlist, \uE006 = park is not on the wishlist
         }
 
-        public string GetFavoriteTooltip(bool isFavorite)
+        public string GetFavoriteActionText(bool isFavorite)
         {
-            return isFavorite ? "Remove from wishlist" : "Add to wishlist";
+            return FavoriteStateHelper.GetFavoriteActionText(isFavorite);
         }
 
         private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
             if (Park != null)
             {
-                Park.IsFavorite = !Park.IsFavorite;
+                FavoriteStateHelper.ToggleFavorite(Park);
                 OnPropertyChanged(nameof(IsFavorite));
             }
         }

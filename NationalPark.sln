@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NationalPark.Tests", "NationalPark.Tests\NationalPark.Tests.csproj", "{812EDB90-C970-4734-9945-A8130FEA93C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -38,6 +40,18 @@ Global
 		{49569175-A7AD-4D63-9A19-E15FBC6C6C10}.Release|x86.ActiveCfg = Release|x86
 		{49569175-A7AD-4D63-9A19-E15FBC6C6C10}.Release|x86.Build.0 = Release|x86
 		{49569175-A7AD-4D63-9A19-E15FBC6C6C10}.Release|x86.Deploy.0 = Release|x86
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Debug|x64.Build.0 = Debug|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Debug|x86.Build.0 = Debug|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Release|ARM64.Build.0 = Release|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Release|x64.ActiveCfg = Release|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Release|x64.Build.0 = Release|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Release|x86.ActiveCfg = Release|Any CPU
+		{812EDB90-C970-4734-9945-A8130FEA93C6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -97,7 +97,7 @@
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <FontIcon Glyph="{x:Bind GetFavoriteIcon(IsFavorite), Mode=OneWay}"
                                      Foreground="{ThemeResource SystemAccentColor}"/>
-                            <TextBlock Text="{x:Bind GetFavoriteTooltip(IsFavorite), Mode=OneWay}"/>
+                            <TextBlock Text="{x:Bind GetFavoriteActionText(IsFavorite), Mode=OneWay}"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
