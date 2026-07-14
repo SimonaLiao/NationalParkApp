@@ -21,6 +21,8 @@ namespace NationalPark.ViewModels
                 
                 _parkService = new NationalParkService();
                 System.Diagnostics.Debug.WriteLine("MainViewModel: NationalParkService created");
+
+                FavoriteParks.CollectionChanged += (_, __) => OnPropertyChanged(nameof(HasFavorites));
                 
                 LoadRegions();
                 System.Diagnostics.Debug.WriteLine("MainViewModel: Regions loaded");
@@ -98,21 +100,18 @@ namespace NationalPark.ViewModels
                 
                 var allParks = _parkService.GetAllParks();
 
-                var filteredParks = _selectedRegion == "All Regions"
-                    ? allParks
-                    : allParks.Where(p => p.Region.Equals(_selectedRegion, System.StringComparison.OrdinalIgnoreCase)).ToList();
-
-                foreach (var park in filteredParks)
+                foreach (var park in allParks)
                 {
-                    Parks.Add(park);
-                }
+                    if (_selectedRegion == "All Regions" || park.Region.Equals(_selectedRegion, System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        Parks.Add(park);
+                    }
 
-                foreach (var park in allParks.Where(p => p.IsFavorite))
-                {
-                    FavoriteParks.Add(park);
+                    if (park.IsFavorite)
+                    {
+                        FavoriteParks.Add(park);
+                    }
                 }
-
-                OnPropertyChanged(nameof(HasFavorites));
                 
                 System.Diagnostics.Debug.WriteLine($"MainViewModel: Loaded {Parks.Count} parks for region '{_selectedRegion}', {FavoriteParks.Count} favorites");
             }
