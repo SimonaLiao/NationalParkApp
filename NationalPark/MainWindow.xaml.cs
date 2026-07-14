@@ -105,5 +105,10 @@ namespace NationalPark
         {
             return count == 1 ? "1 park" : $"{count} parks";
         }
+
+        public Visibility GetFavoritesSectionVisibility(bool hasFavorites)
+        {
+            return hasFavorites ? Visibility.Visible : Visibility.Collapsed;
+        }
     }
 }

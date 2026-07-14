@@ -39,7 +39,10 @@ namespace NationalPark.ViewModels
         }
 
         public ObservableCollection<NationalParkModel> Parks { get; } = new ObservableCollection<NationalParkModel>();
+        public ObservableCollection<NationalParkModel> FavoriteParks { get; } = new ObservableCollection<NationalParkModel>();
         public ObservableCollection<string> Regions { get; } = new ObservableCollection<string>();
+
+        public bool HasFavorites => FavoriteParks.Count > 0;
 
         public NationalParkModel? SelectedPark
         {
@@ -91,17 +94,27 @@ namespace NationalPark.ViewModels
             try
             {
                 Parks.Clear();
+                FavoriteParks.Clear();
                 
-                var parks = _selectedRegion == "All Regions" 
-                    ? _parkService.GetAllParks() 
-                    : _parkService.GetParksByRegion(_selectedRegion);
-                    
-                foreach (var park in parks)
+                var allParks = _parkService.GetAllParks();
+
+                var filteredParks = _selectedRegion == "All Regions"
+                    ? allParks
+                    : allParks.Where(p => p.Region.Equals(_selectedRegion, System.StringComparison.OrdinalIgnoreCase)).ToList();
+
+                foreach (var park in filteredParks)
                 {
                     Parks.Add(park);
                 }
+
+                foreach (var park in allParks.Where(p => p.IsFavorite))
+                {
+                    FavoriteParks.Add(park);
+                }
+
+                OnPropertyChanged(nameof(HasFavorites));
                 
-                System.Diagnostics.Debug.WriteLine($"MainViewModel: Loaded {Parks.Count} parks for region '{_selectedRegion}'");
+                System.Diagnostics.Debug.WriteLine($"MainViewModel: Loaded {Parks.Count} parks for region '{_selectedRegion}', {FavoriteParks.Count} favorites");
             }
             catch (System.Exception ex)
             {
