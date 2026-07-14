@@ -21,6 +21,8 @@ namespace NationalPark.ViewModels
                 
                 _parkService = new NationalParkService();
                 System.Diagnostics.Debug.WriteLine("MainViewModel: NationalParkService created");
+
+                FavoriteParks.CollectionChanged += (_, __) => OnPropertyChanged(nameof(HasFavorites));
                 
                 LoadRegions();
                 System.Diagnostics.Debug.WriteLine("MainViewModel: Regions loaded");
@@ -39,7 +41,10 @@ namespace NationalPark.ViewModels
         }
 
         public ObservableCollection<NationalParkModel> Parks { get; } = new ObservableCollection<NationalParkModel>();
+        public ObservableCollection<NationalParkModel> FavoriteParks { get; } = new ObservableCollection<NationalParkModel>();
         public ObservableCollection<string> Regions { get; } = new ObservableCollection<string>();
+
+        public bool HasFavorites => FavoriteParks.Count > 0;
 
         public NationalParkModel? SelectedPark
         {
@@ -91,17 +96,24 @@ namespace NationalPark.ViewModels
             try
             {
                 Parks.Clear();
+                FavoriteParks.Clear();
                 
-                var parks = _selectedRegion == "All Regions" 
-                    ? _parkService.GetAllParks() 
-                    : _parkService.GetParksByRegion(_selectedRegion);
-                    
-                foreach (var park in parks)
+                var allParks = _parkService.GetAllParks();
+
+                foreach (var park in allParks)
                 {
-                    Parks.Add(park);
+                    if (_selectedRegion == "All Regions" || park.Region.Equals(_selectedRegion, System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        Parks.Add(park);
+                    }
+
+                    if (park.IsFavorite)
+                    {
+                        FavoriteParks.Add(park);
+                    }
                 }
                 
-                System.Diagnostics.Debug.WriteLine($"MainViewModel: Loaded {Parks.Count} parks for region '{_selectedRegion}'");
+                System.Diagnostics.Debug.WriteLine($"MainViewModel: Loaded {Parks.Count} parks for region '{_selectedRegion}', {FavoriteParks.Count} favorites");
             }
             catch (System.Exception ex)
             {

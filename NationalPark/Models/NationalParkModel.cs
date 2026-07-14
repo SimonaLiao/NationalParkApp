@@ -11,6 +11,7 @@ namespace NationalPark.Models
         public string Description { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         public bool IsVisited { get; set; }
+        public bool IsFavorite { get; set; }
         public List<VisitRecord> VisitRecords { get; set; } = new List<VisitRecord>();
         public string Region { get; set; } = string.Empty;
         public DateTime VisitedDate { get; set; } // empty when not visited

@@ -23,6 +23,7 @@ namespace NationalPark.Controls
                     OnPropertyChanged();
                     // Trigger updates for all dependent properties
                     OnPropertyChanged(nameof(IsVisited));
+                    OnPropertyChanged(nameof(IsFavorite));
                     OnPropertyChanged(nameof(ParkName));
                     OnPropertyChanged(nameof(State));
                     OnPropertyChanged(nameof(ImageUrl));
@@ -34,6 +35,7 @@ namespace NationalPark.Controls
 
         // Helper properties for binding
         public bool IsVisited => Park?.IsVisited ?? false;
+        public bool IsFavorite => Park?.IsFavorite ?? false;
         public string ParkName => Park?.Name ?? string.Empty;
         public string State => Park?.State ?? string.Empty;
         public string ImageUrl => Park?.ImageUrl ?? string.Empty;
@@ -91,6 +93,25 @@ namespace NationalPark.Controls
         public Visibility GetVisitRecordsVisibility(bool isVisited)
         {
             return isVisited ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public string GetFavoriteIcon(bool isFavorite)
+        {
+            return FavoriteStateHelper.GetFavoriteIcon(isFavorite); // \uE00B = park is on the wishlist, \uE006 = park is not on the wishlist
+        }
+
+        public string GetFavoriteActionText(bool isFavorite)
+        {
+            return FavoriteStateHelper.GetFavoriteActionText(isFavorite);
+        }
+
+        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Park != null)
+            {
+                FavoriteStateHelper.ToggleFavorite(Park);
+                OnPropertyChanged(nameof(IsFavorite));
+            }
         }
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
